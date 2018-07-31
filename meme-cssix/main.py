@@ -13,6 +13,13 @@ class EnterInfoHandler(webapp2.RequestHandler):
         self.response.write(welcome_template.render())
 
 
+class MemeHandler(webapp2.RequestHandler):
+    def get(self):  # for a get request
+        welcome_template = the_jinja_env.get_template('templates/results.html')
+        self.response.write(welcome_template.render())
+
+
 app = webapp2.WSGIApplication([
     ('/', EnterInfoHandler),
+    ('/showmeme', MemeHandler),
 ], debug=True)
